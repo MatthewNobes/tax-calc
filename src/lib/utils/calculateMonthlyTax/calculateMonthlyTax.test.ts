@@ -12,7 +12,7 @@ describe('calculateMonthlyTax', () => {
 		expect(taxAmount).toBe(0);
 	});
 
-	it('should return the income tax amount of 317.20 for 2638.60', () => {
+	it('should return the income tax amount of 317.22 for 2638.60', () => {
 		const taxAmount = calculateMonthlyTax(2638.6);
 		expect(taxAmount).toBe(318.22);
 	});

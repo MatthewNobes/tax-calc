@@ -25,15 +25,15 @@ export const calculateMonthlyTax = (preTaxPay: number) => {
 
 			// if you exceed £100,000, the personal allowance is reduced by £1 for every £2 over the allowance
 			if (preTaxPay > 8333.34) {
+				// this reduces by 1 the personal allowance for every 2 over 8333.4
 				newPersonalAllowance = newPersonalAllowance - (preTaxPay - 8333.4) / 2;
 
+				// works out how much extra needs to be added to the higher rate amount by taking the updated personal allowance from the initial personal allowance
 				extraToPayAtHigherRate = 1047.5 - newPersonalAllowance;
 			}
 
 			const amountToPayAtHigherRate =
 				(preTaxPay - brackets[1].lowerMonthlyLimit + extraToPayAtHigherRate) * brackets[1].rate;
-
-			console.log(amountToPayAtHigherRate);
 
 			taxTotal = amountToPayAtLowerRate + amountToPayAtHigherRate;
 		} else if (preTaxPay > brackets[2].lowerMonthlyLimit) {
